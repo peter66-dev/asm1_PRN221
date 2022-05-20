@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FStoreLibrary", "FStoreLibrary\FStoreLibrary.csproj", "{582DC65B-9FA7-4D13-8777-74221323BB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleWPFApp", "SaleWPFApp\SaleWPFApp.csproj", "{4663374A-72BD-48FC-9D83-0947DD51A136}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{582DC65B-9FA7-4D13-8777-74221323BB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582DC65B-9FA7-4D13-8777-74221323BB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582DC65B-9FA7-4D13-8777-74221323BB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582DC65B-9FA7-4D13-8777-74221323BB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4663374A-72BD-48FC-9D83-0947DD51A136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4663374A-72BD-48FC-9D83-0947DD51A136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4663374A-72BD-48FC-9D83-0947DD51A136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4663374A-72BD-48FC-9D83-0947DD51A136}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCA582A1-1E4F-4140-8938-59CC66D22ABD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,63 @@
+﻿<Window x:Class="SalesWPFApp.Member_Detail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="Member detail" Height="700" Width="800"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,-20,-40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="38*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel VerticalAlignment="Top" Margin="10,10,10,0" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation ="Vertical"
+                            HorizontalAlignment="Center" Width="350">
+                    <Label Name="lbTitle" Foreground="Red" FontWeight="DemiBold"
+                            FontSize="20" Content="MEMBER INFORMATION" HorizontalAlignment="Center"/>
+                    <Label Name="lbMemId" Content="Member Id" HorizontalAlignment="Left"/>
+                    <TextBox Name="txtMemId"
+                            Height="auto" HorizontalAlignment="Stretch"/>
+                    <Label Name="lbEmail" Content="Email" HorizontalAlignment="Left"/>
+                    <TextBox Name="txtEmail"
+                            Height="auto"
+                           HorizontalAlignment="Stretch"/>
+                    <Label Name="lbCompanyName" Content="Company name"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtCompanyName"
+                             Height="auto"
+                              HorizontalAlignment="Stretch"/>
+                    <Label Name="lbCity" Content="City"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtCity"
+                             Height="auto"
+                              HorizontalAlignment="Stretch"/>
+                    <Label Name="lbCountry" Content="Country"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtCountry"
+                             Height="auto"
+                              HorizontalAlignment="Stretch"/>
+                    <Label Name="lbPassword" Content="Password"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtPassword"
+                             Height="auto"
+                             HorizontalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button x:Name="btnConfirm" Margin="10" Width="80" Content="Confirm"
+                            Click="btnConfirm_Click" Cursor="Hand"/>
+                    <Button x:Name="btnClose" Margin="10" Width="80" Content="Close"
+                            Click="btnClose_Click" Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+        <Button Background="GreenYellow" Content="Order history" Cursor="Hand"
+                   x:Name="btnOrderHistory" Width="138" Height="33" Margin="20,22,662,669" Click="btnOrderHistory_Click" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

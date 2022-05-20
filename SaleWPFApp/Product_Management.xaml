@@ -1,0 +1,98 @@
+﻿<Window x:Class="SalesWPFApp.Product_Management"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="Product Management" Height="700" Width="800"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,-16">
+        <DockPanel VerticalAlignment="Top" Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation ="Vertical"
+                            HorizontalAlignment="Center" Width="350">
+                    <Label Name="lbTitle" Foreground="Red" FontWeight="DemiBold"
+                            FontSize="20" Content="PRODUCT INFORMATION" HorizontalAlignment="Center"/>
+                    <Label Name="lbProId" Content="Product Id" HorizontalAlignment="Left"/>
+                    <TextBox Name="txtProId"
+                            Height="auto"
+                            Text="{Binding Path=ProductId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvProducts, 
+                            Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                    <Label Name="lbCateId" Content="Category Id" HorizontalAlignment="Left"/>
+                    <TextBox Name="txtCateId"
+                            Height="auto"
+                            Text="{Binding Path=CategoryId, Mode=OneWay}" 
+                            DataContext="{Binding ElementName=lvProducts, 
+                            Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                    <Label Name="lbProductName" Content="Product Name"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtProductName"
+                             Height="auto"
+                             Text="{Binding Path=ProductName, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvProducts,
+                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                    <Label Name="lbWeight" Content="Weight" HorizontalAlignment="Left" />
+                    <TextBox Name="txtWeight"
+                             Height="auto"
+                             Text="{Binding Path=Weight, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvProducts,
+                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                    <Label Name="lbUnitPrice" Content="Unit price"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtUnitPrice"
+                             Height="auto"
+                             Text="{Binding
+                             Path=UnitPrice,StringFormat={}{0:N3}, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvProducts,
+                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                    <Label Name="lbUnitsInStock" Content="Units in stock"  HorizontalAlignment="Left"/>
+                    <TextBox Name="txtUnitsInStock"
+                             Height="auto"
+                             Text="{Binding Path=UnitsInStock, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvProducts,
+                             Path=SelectedItem}" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Button x:Name="btnLoad" Margin="10" Width="80" Content="Load"
+                            Click="btnLoad_Click" Cursor="Hand"/>
+                    <Button x:Name="btnInsert" Margin="10" Width="80" Content="Insert"
+                            Click="btnInsert_Click" Cursor="Hand"/>
+                    <Button x:Name="btnUpdate" Margin="10" Width="80" Content="Update"
+                            Click="btnUpdate_Click" Cursor="Hand"/>
+                    <Button x:Name="btnDelete" Margin="10" Width="80" Content="Delete"
+                            Click="btnDelete_Click" Cursor="Hand"/>
+                </StackPanel>
+                <ListView Grid.Row="2" Name="lvProducts" Width="Auto" Height="Auto" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Product ID" Width="100" 
+                                            DisplayMemberBinding="{Binding Path=ProductId}"/>
+                            <GridViewColumn Header="Category ID" Width="100"
+                                            DisplayMemberBinding="{Binding Path=CategoryId}"/>
+                            <GridViewColumn Header="Product Name" Width="200"
+                                            DisplayMemberBinding="{Binding Path=ProductName }"/>
+                            <GridViewColumn Header="Weight" Width="100"
+                                             DisplayMemberBinding="{Binding Path=Weight,
+                                             StringFormat={}{0:N3}}"/>
+                            <GridViewColumn Header="Unit Price" Width="100" 
+                                            DisplayMemberBinding="{Binding Path=UnitPrice,
+                                             StringFormat={}{0:N3}}"/>
+                            <GridViewColumn Header="Units In Stock" Width="100" 
+                                            DisplayMemberBinding="{Binding Path=UnitsInStock}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Grid.Row="3" x:Name="btnClose" Margin="10" 
+                         HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                         Width="80" Content="Close" Click="btnClose_Click"  Cursor="Hand"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
