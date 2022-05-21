@@ -38,12 +38,6 @@
                              Text="{Binding Path=CompanyName, Mode=OneWay}"
                              DataContext="{Binding ElementName=lvMembers,
                              Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
-                    <Label Name="lbWeight" Content="Weight" HorizontalAlignment="Left" />
-                    <TextBox Name="txtWeight"
-                             Height="auto"
-                             Text="{Binding Path=Weight, Mode=OneWay}"
-                             DataContext="{Binding ElementName=lvMembers,
-                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
                     <Label Name="lbCity" Content="City"  HorizontalAlignment="Left"/>
                     <TextBox Name="txtCity"
                              Height="auto"

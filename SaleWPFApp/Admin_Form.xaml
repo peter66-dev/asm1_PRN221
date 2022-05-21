@@ -16,6 +16,8 @@
                     Width="500" Height="30" Margin="0,30,0,0" Click="btnProductMng_Click" Cursor="Hand"/>
             <Button x:Name="btnOrderMng" Content="ORDER MANAGEMENT" Background="Aquamarine"
                     Width="500" Height="30" Margin="0,30,0,0" Click="btnOrderMng_Click" Cursor="Hand"/>
+            <Button x:Name="btnBack" Content="BACK" Background="IndianRed"
+                    Width="200" Height="30" Margin="0,30,0,0" Cursor="Hand" Click="btnBack_Click"/>
 
         </StackPanel>
 

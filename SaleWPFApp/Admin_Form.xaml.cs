@@ -30,12 +30,14 @@ namespace SalesWPFApp
             //{
             //    MessageBox.Show("Bạn không có quyền mở form này!");
             //}
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         private void btnMemberMng_Click(object sender, RoutedEventArgs e)
         {
-
+            Member_Management window = new Member_Management();
+            window.Show();
+            this.Close();
         }
 
         private void btnProductMng_Click(object sender, RoutedEventArgs e)
@@ -46,6 +48,13 @@ namespace SalesWPFApp
         private void btnOrderMng_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Login window = new Login();
+            window.Show();
+            this.Close();
         }
     }
 }

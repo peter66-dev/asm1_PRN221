@@ -47,6 +47,7 @@ namespace SalesWPFApp
                 Admin_Form window = new Admin_Form();
                 window.isAdmin = true;
                 window.Show();
+                this.Close();
             }
             else
             {
@@ -61,6 +62,7 @@ namespace SalesWPFApp
                         window.InsertOrUpdate = true;
                         window.MemberInfo = tmp;
                         window.Show();
+                        this.Close();
                     }
                 }
                 if (!isLogined)
