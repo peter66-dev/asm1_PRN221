@@ -31,7 +31,6 @@
 
                         <Label Grid.Row="1" Grid.Column="0" Margin="0,5" Content="Password : " VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
                         <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="txtPassword" Margin="0,5" Width="150" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
-
                         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="302">
                             <Button Content="REGISTER" x:Name="btnRegister" Margin="2,10" Width="100" Height="30" Click="btnRegister_Click" Background="LightGoldenrodYellow" Foreground="Black" BorderBrush="White"/>
                             <Button Content="LOGIN" x:Name="btnLogin" Margin="2,10" Width="100" Height="30" Click="btnLogin_Click" Background="#FF76DAA0" Foreground="Black" BorderBrush="White"/>

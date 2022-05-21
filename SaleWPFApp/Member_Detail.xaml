@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SalesWPFApp"
         mc:Ignorable="d"
-        Title="Member detail" Height="700" Width="800"
+        Title="Member detail" Height="540" Width="800"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="0,0,-20,-40">
         <Grid.ColumnDefinitions>
@@ -50,14 +50,15 @@
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Horizontal"
                             HorizontalAlignment="Center">
+                    <Button x:Name="btnOrderHistory" Margin="10" Width="80" Content="Order history"
+                            Click="btnOrderHistory_Click" Cursor="Hand"/>
                     <Button x:Name="btnConfirm" Margin="10" Width="80" Content="Confirm"
                             Click="btnConfirm_Click" Cursor="Hand"/>
                     <Button x:Name="btnClose" Margin="10" Width="80" Content="Close"
                             Click="btnClose_Click" Cursor="Hand"/>
+
                 </StackPanel>
             </Grid>
         </DockPanel>
-        <Button Background="GreenYellow" Content="Order history" Cursor="Hand"
-                   x:Name="btnOrderHistory" Width="138" Height="33" Margin="20,22,662,669" Click="btnOrderHistory_Click" Grid.ColumnSpan="2"/>
-    </Grid>
+       </Grid>
 </Window>

@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v5.0": {
       "SaleWPFApp/1.0.0": {
         "dependencies": {
-          "FStoreLibrary": "1.0.0"
+          "FStoreLibrary": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "5.0.2"
         },
         "runtime": {
           "SaleWPFApp.dll": {}

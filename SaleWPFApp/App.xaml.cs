@@ -35,7 +35,7 @@ namespace SalesWPFApp
         {
             //var member_detail = serviceProvider.GetService<Member_Detail>();
             //member_detail.Show();
-            Login login = new Login();
+            var login = serviceProvider.GetService<Login>();
             login.Show();
         }
     }

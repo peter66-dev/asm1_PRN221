@@ -117,5 +117,29 @@ namespace FStoreLibrary.DataAccess
             }
             return isDeleted;
         }
+        public bool InsertMember(Member mem)
+        {
+            bool isInserted = false;
+            try
+            {
+                Member tmp = GetMemberByID(mem.MemberId);
+                if(tmp == null)
+                {
+                    var context = new FStoreDBContext();
+                    context.Members.Add(mem);
+                    if(context.SaveChanges() != 0)
+                    {
+                        isInserted = !isInserted;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("MemberID has existed in system!");
+            }
+            return isInserted;
+        }
+
     }
 }

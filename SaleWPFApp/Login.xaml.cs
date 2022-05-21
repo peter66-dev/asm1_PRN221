@@ -47,7 +47,6 @@ namespace SalesWPFApp
                 Admin_Form window = new Admin_Form();
                 window.isAdmin = true;
                 window.Show();
-                this.Hide();
             }
             else
             {
@@ -58,6 +57,10 @@ namespace SalesWPFApp
                     if (tmp.Email.Equals(email) && tmp.Password.Equals(tmp.Password)) // Member login
                     {
                         isLogined = !isLogined;
+                        Member_Detail window = new Member_Detail();
+                        window.InsertOrUpdate = true;
+                        window.MemberInfo = tmp;
+                        window.Show();
                     }
                 }
                 if (!isLogined)
