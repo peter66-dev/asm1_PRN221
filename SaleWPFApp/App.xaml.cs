@@ -1,5 +1,6 @@
 ﻿using FStoreLibrary.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using SaleWPFApp;
 using System.Windows;
 
 namespace SalesWPFApp
@@ -29,14 +30,16 @@ namespace SalesWPFApp
             services.AddSingleton<Product_Management>();
             services.AddSingleton<Member_Management>();
             services.AddSingleton<Member_Detail>();
+            services.AddSingleton<Order_Management>();
+            services.AddSingleton<Create_Order>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            //var member_detail = serviceProvider.GetService<Member_Detail>();
-            //member_detail.Show();
-            var login = serviceProvider.GetService<Login>();
-            login.Show();
+            var window = serviceProvider.GetService<Create_Order>();
+            window.Show();
+            //var login = serviceProvider.GetService<Login>();
+            //login.Show();
         }
     }
 }

@@ -72,6 +72,21 @@ namespace FStoreLibrary.DataAccess
             return list;
         }
 
+        public Member GetMemberByEmail(string email)
+        {
+            Member mem = null;
+            try
+            {
+                var context = new FStoreDBContext();
+                mem = context.Members.Where(m => m.Email.ToLower().Contains(email.ToLower())).ToList()[0];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bug in GetMemberByEmail function!");
+            }
+            return mem;
+        }
+
         public bool UpdateMember(Member mem)
         {
             bool isUpdated = false;

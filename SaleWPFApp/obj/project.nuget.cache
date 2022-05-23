@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "esrTIzQCcFpZojxUCM6YtVpy8OS3JEIDa7/kqhhPpbfKrXB/3lIghO+xJTKTlunsOii9tQPz5VFO1gUj6qYAEQ==",
+  "dgSpecHash": "ystW429yD4M7mbNWVXwJOFFxC6SoV6PeM01SIKA5wlqEKRWlBiLBTJX/qc7142Je8shF7nz0j2xs610BC7fe+w==",
   "success": true,
-  "projectFilePath": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_Second\\SaleWPFApp\\SaleWPFApp.csproj",
+  "projectFilePath": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_SE151263\\SaleWPFApp\\SaleWPFApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vanph\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\vanph\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

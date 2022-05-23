@@ -20,5 +20,6 @@ namespace FStoreLibrary.Repository
         public bool InsertMember(Member mem) => MemberDAO.Instance.InsertMember(mem);
         
         public bool UpdateMember(Member member) => MemberDAO.Instance.UpdateMember(member);
+        public Member GetMemberByEmail(string email) => MemberDAO.Instance.GetMemberByEmail(email);
     }
 }

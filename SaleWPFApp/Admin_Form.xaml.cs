@@ -42,7 +42,9 @@ namespace SalesWPFApp
 
         private void btnProductMng_Click(object sender, RoutedEventArgs e)
         {
-
+            Product_Management window = new Product_Management();
+            window.Show();
+            this.Close();
         }
 
         private void btnOrderMng_Click(object sender, RoutedEventArgs e)

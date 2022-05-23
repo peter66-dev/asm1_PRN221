@@ -6005,11 +6005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_Second\\FStoreLibrary\\FStoreLibrary.csproj",
+      "projectUniqueName": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_SE151263\\FStoreLibrary\\FStoreLibrary.csproj",
       "projectName": "FStoreLibrary",
-      "projectPath": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_Second\\FStoreLibrary\\FStoreLibrary.csproj",
+      "projectPath": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_SE151263\\FStoreLibrary\\FStoreLibrary.csproj",
       "packagesPath": "C:\\Users\\vanph\\.nuget\\packages\\",
-      "outputPath": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_Second\\FStoreLibrary\\obj\\",
+      "outputPath": "E:\\Chuyen_nganh_7\\PRN221\\Assignments\\Ass01Solution_SE151263\\FStoreLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vanph\\AppData\\Roaming\\NuGet\\NuGet.Config",

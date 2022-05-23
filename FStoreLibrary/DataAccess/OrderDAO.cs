@@ -80,5 +80,50 @@ namespace FStoreLibrary.DataAccess
         {
             return list.OrderByDescending(o => o.Freight).ToList();
         }
+
+        public int CreateNewOrderID()
+        {
+            int id = 0;
+            List<Order> list = GetAllOrders();
+            Random rd = new Random();
+            bool check = true;
+            while (check)
+            {
+                check = false;
+                id = rd.Next(1,32000) ;
+                foreach (var or in list)
+                {
+                    if (id  == or.OrderId)
+                    {
+                        check = true;
+                    }
+                }
+            }
+            return id;
+        }
+
+        public bool InsertOrder(Order ord)
+        {
+            bool isInserted = false;
+            try
+            {
+                var context = new FStoreDBContext();
+                Order tmp = context.Orders.SingleOrDefault(o => o.OrderId == ord.OrderId);
+                if (tmp != null)
+                {
+                    return isInserted;
+                }
+                context.Orders.Add(ord);
+                if (context.SaveChanges() != 0)
+                {
+                    isInserted = !isInserted;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bug in InsertOrder function!");
+            }
+            return isInserted;
+        }
     }
 }

@@ -26,6 +26,35 @@ namespace FStoreLibrary.DataAccess
             }
         }
 
+        public bool InsertOrderDetails(List<Product> cart, int orderID, float discount)
+        {
+            bool check = false;
+            try
+            {
+                var context = new FStoreDBContext();
+                foreach (var pro in cart)
+                {
+                    OrderDetail od = new OrderDetail() { 
+                        OrderId = orderID,
+                        ProductId = pro.ProductId,
+                        UnitPrice = pro.UnitPrice,
+                        Quantity = pro.UnitsInStock,
+                        Discount = Math.Round(discount,3)
+                    };
+                    context.OrderDetails.Add(od);
+                    if(context.SaveChanges()!= 0)
+                    {
+                        check = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bug in InsertOrderDetails function");
+            }
+            return check;
+        }
+
         public List<OrderDetail> GetAllOrderDetailsByOrderID(int orderID)
         {
             List<OrderDetail> list = null;

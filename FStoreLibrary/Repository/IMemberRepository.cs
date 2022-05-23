@@ -11,5 +11,6 @@ namespace FStoreLibrary.Repository
         public bool UpdateMember(Member member);
         public bool DeleteMember(int id);
         public bool InsertMember(Member mem);
+        public Member GetMemberByEmail(string email);
     }
 }

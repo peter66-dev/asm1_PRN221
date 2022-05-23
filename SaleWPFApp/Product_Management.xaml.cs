@@ -23,10 +23,11 @@ namespace SalesWPFApp
     {
         public bool isAdmin { get; set; } = false;
         IProductRepository productRepository;
-        public Product_Management(IProductRepository repo)
+        public Product_Management()
         {
             InitializeComponent();
-            productRepository = repo;
+            productRepository = new ProductRepository();
+            cboSearch.SelectedIndex = 0;
         }
 
         private bool CheckForm()
@@ -88,16 +89,16 @@ namespace SalesWPFApp
             return pro;
         }
 
-        private void LoadProductList()
+        private void LoadProductList(List<Product> list)
         {
-            lvProducts.ItemsSource = productRepository.GetAllProducts();
+            lvProducts.ItemsSource = list;
         }
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                LoadProductList();
+                LoadProductList(productRepository.GetAllProducts());
             }
             catch (Exception ex)
             {
@@ -116,7 +117,7 @@ namespace SalesWPFApp
                     {
                         if (productRepository.InsertProduct(pro))
                         {
-                            LoadProductList();
+                            LoadProductList(productRepository.GetAllProducts());
                             MessageBox.Show($"Inserted {pro.ProductName} successfully!", "Insert message");
                         }
                         else
@@ -126,7 +127,7 @@ namespace SalesWPFApp
                     }
                     else //đã tồn tại trong system!
                     {
-                        MessageBox.Show($"ID của sản phẩm này đã tồn tại!", "Insert error");
+                        MessageBox.Show($"ID của sản phẩm này đã tồn tại!", "Error message");
                     }
 
                 }
@@ -148,17 +149,17 @@ namespace SalesWPFApp
                     {
                         if (productRepository.UpdateProduct(pro))
                         {
-                            LoadProductList();
+                            LoadProductList(productRepository.GetAllProducts());
                             MessageBox.Show($"Updated {pro.ProductName} successfully!", "Update message");
                         }
                         else
                         {
-                            MessageBox.Show($"Nothing to update!", "Update message");
+                            MessageBox.Show($"Updated {pro.ProductName} failed!", "Error message");
                         }
                     }
                     else
                     {
-                        MessageBox.Show($"Xin lỗi, mã sản phẩm này không tồn tại!", "Update message");
+                        MessageBox.Show($"Xin lỗi, mã sản phẩm này không tồn tại!", "Error message");
                     }
 
                 }
@@ -175,20 +176,107 @@ namespace SalesWPFApp
             {
                 int proID = int.Parse(txtProId.Text.ToString());
                 Product pro = productRepository.GetProductByID(proID);
-                if (productRepository.DeleteProduct(proID))
+                if (MessageBox.Show($"Bạn thật sự muốn xoá {pro.ProductName}?", "Message", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    LoadProductList();
-                    MessageBox.Show($"Deleted {pro.ProductName} successfully!", "Delete message");
+                    if (productRepository.DeleteProduct(proID))
+                    {
+                        LoadProductList(productRepository.GetAllProducts());
+                        MessageBox.Show($"Deleted {pro.ProductName} successfully!", "Delete message");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Deleting {pro.ProductName} failed!", "Error message");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show($"Deleting failed!", "Delete message");
-                }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error at btnDelete_Click function!");
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (cboSearch.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Xin lỗi, bạn phải chọn kiểu tìm kiếm trước!", "Error message");
+            }
+            else if (txtSearch.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Xin lỗi, bạn phải nhập từ khoá tìm kiếm!", "Error message");
+            }else
+            {
+                int typeSearch = cboSearch.SelectedIndex;
+                string search_keyword = txtSearch.Text.Trim();
+                if (typeSearch == 0) //  0: ProductID
+                {
+                    if (int.TryParse(search_keyword, out int id) && id > 0)
+                    {
+                        Product pro = productRepository.GetProductByID(id);
+                        if (pro == null)
+                        {
+                            MessageBox.Show("Xin lỗi, Product ID này không tồn tại!", "Error message");
+                        }
+                        else
+                        {
+                            LoadProductList(new List<Product> { pro});
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xin lỗi, thông tin Product ID không hợp lệ!", "Error message");
+                    }
+                }
+                else if (typeSearch == 1) // 1: ProductName
+                {
+                    List<Product> list = productRepository.GetProductsByName(search_keyword);
+                    if (list.Count == 0)
+                    {
+                        MessageBox.Show($"Xin lỗi, không tồn tại sản phẩm với tên: {search_keyword}!", "Error message");
+                    }
+                    else
+                    {
+                        LoadProductList(list);
+                    }
+                }
+                else if (typeSearch == 2) //  2: UnitPrice
+                {
+                    if (decimal.TryParse(search_keyword,out decimal price) && price > 0)
+                    {
+                        List<Product> list = productRepository.GetProductsByPrice(price);
+                        if (list.Count == 0)
+                        {
+                            MessageBox.Show($"Xin lỗi, không có sản phẩm nào có mức giá thấp hơn giá {price}!", "Error message");
+                        }
+                        else
+                        {
+                            LoadProductList(list);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Xin lỗi, thông tin Unit Price không phù hợp!", "Error message");
+                    }
+                }
+                else if (typeSearch == 3) //  3: UnitsInStock
+                {
+                    if (int.TryParse(search_keyword, out int quantity) && quantity > 0)
+                    {
+                        List<Product> list = productRepository.GetProductsByUnitInStock(quantity);
+                        if (list.Count == 0)
+                        {
+                            MessageBox.Show($"Xin lỗi, không có sản phẩm nào có số lượng thấp hơn {quantity}!", "Error message");
+                        }
+                        else
+                        {
+                            LoadProductList(list);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Xin lỗi, thông tin Units in stock không phù hợp!", "Error message");
+                    }
+                }
             }
         }
 
@@ -199,5 +287,7 @@ namespace SalesWPFApp
                 Close();
             }
         }
+
+       
     }
 }

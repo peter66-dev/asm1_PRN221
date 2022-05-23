@@ -70,13 +70,13 @@ namespace FStoreLibrary.DataAccess
             return products;
         }
 
-        public List<Product> GetProductsByPrice(decimal min, decimal max)
+        public List<Product> GetProductsByPrice(decimal price)
         {
             List<Product> products = null;
             try
             {
                 var context = new FStoreDBContext();
-                products = context.Products.Where(p => p.UnitPrice >= min && p.UnitPrice <= max).ToList();
+                products = context.Products.Where(p => p.UnitPrice <= price).OrderBy(p => p.UnitPrice).ToList();
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace FStoreLibrary.DataAccess
             try
             {
                 var context = new FStoreDBContext();
-                products = context.Products.Where(p => p.UnitsInStock == quantity).ToList();
+                products = context.Products.Where(p => p.UnitsInStock <= quantity).OrderBy(p => p.UnitsInStock).ToList();
             }
             catch (Exception ex)
             {
@@ -170,6 +170,46 @@ namespace FStoreLibrary.DataAccess
             return isDeleted;
         }
 
+        public String CheckQuantity(List<Product> list)
+        {
+            String msg = new String("");
+            foreach (var proBuy in list)
+            {
+                Product proInStock = GetProductsByID(proBuy.ProductId);
+                if (proInStock.UnitsInStock < proBuy.UnitsInStock) // sl kho < sl mua
+                {
+                    msg += proBuy.ProductName + " | ";
+                }
+            }
+            return msg;
+        }
 
+        public int SubQuantity(List<Product> list)
+        {
+            int count = 0;
+            try
+            {
+                foreach (var pro in list)
+                {
+                    Product proInStock = GetProductsByID(pro.ProductId);
+                    var context = new FStoreDBContext();
+                    if (proInStock.UnitsInStock >= pro.UnitsInStock)
+                    {
+                        proInStock.UnitsInStock -= pro.UnitsInStock;
+                        context.Entry<Product>(proInStock).State = EntityState.Modified;
+                        if (context.SaveChanges() != 0)
+                        {
+                            count++;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Bug in SubQuantity function!");
+            }
+            return count;
+        }
     }
 }
+           

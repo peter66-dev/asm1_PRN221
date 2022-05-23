@@ -17,7 +17,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation ="Vertical"
-                            HorizontalAlignment="Center" Width="350">
+                            HorizontalAlignment="Left" Width="350">
                     <Label Name="lbTitle" Foreground="Red" FontWeight="DemiBold"
                             FontSize="20" Content="PRODUCT INFORMATION" HorizontalAlignment="Center"/>
                     <Label Name="lbProId" Content="Product Id" HorizontalAlignment="Left"/>
@@ -59,7 +59,7 @@
                              Path=SelectedItem}" HorizontalAlignment="Stretch"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Horizontal"
-                            HorizontalAlignment="Center">
+                            HorizontalAlignment="Left">
                     <Button x:Name="btnLoad" Margin="10" Width="80" Content="Load"
                             Click="btnLoad_Click" Cursor="Hand"/>
                     <Button x:Name="btnInsert" Margin="10" Width="80" Content="Insert"
@@ -79,8 +79,7 @@
                             <GridViewColumn Header="Product Name" Width="200"
                                             DisplayMemberBinding="{Binding Path=ProductName }"/>
                             <GridViewColumn Header="Weight" Width="100"
-                                             DisplayMemberBinding="{Binding Path=Weight,
-                                             StringFormat={}{0:N3}}"/>
+                                             DisplayMemberBinding="{Binding Path=Weight}"/>
                             <GridViewColumn Header="Unit Price" Width="100" 
                                             DisplayMemberBinding="{Binding Path=UnitPrice,
                                              StringFormat={}{0:N3}}"/>
@@ -92,7 +91,15 @@
                 <Button Grid.Row="3" x:Name="btnClose" Margin="10" 
                          HorizontalAlignment="Center" VerticalAlignment="Bottom"
                          Width="80" Content="Close" Click="btnClose_Click"  Cursor="Hand"/>
+                <ComboBox x:Name="cboSearch" HorizontalAlignment="Left" Margin="456,22,0,0" VerticalAlignment="Top" Width="114" Cursor="Hand">
+                    <ComboBoxItem x:Name="ProductID">ID</ComboBoxItem>
+                    <ComboBoxItem x:Name="ProductName">Name</ComboBoxItem>
+                    <ComboBoxItem x:Name="UnitPrice">Unit Price</ComboBoxItem>
+                    <ComboBoxItem x:Name="UnitsInStock">Units in stock</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Margin="587,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="20"/>
             </Grid>
         </DockPanel>
+        <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="716,32,0,0" VerticalAlignment="Top" Height="23" Width="44" Click="btnSearch_Click"/>
     </Grid>
 </Window>
