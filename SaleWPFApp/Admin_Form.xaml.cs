@@ -19,18 +19,9 @@ namespace SalesWPFApp
     /// </summary>
     public partial class Admin_Form : Window
     {
-        public bool isAdmin { get; set; } = false;
         public Admin_Form()
         {
-            //if (this.isAdmin)
-            //{
-            //    InitializeComponent();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Bạn không có quyền mở form này!");
-            //}
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void btnMemberMng_Click(object sender, RoutedEventArgs e)
@@ -49,7 +40,7 @@ namespace SalesWPFApp
 
         private void btnOrderMng_Click(object sender, RoutedEventArgs e)
         {
-
+            Order_Management
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

@@ -72,15 +72,15 @@
                 <ListView Grid.Row="2" Name="lvOrders" Width="Auto" Height="Auto" >
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Order ID" Width="100" 
+                            <GridViewColumn Header="Order ID" Width="80" 
                                             DisplayMemberBinding="{Binding Path=OrderId}"/>
-                            <GridViewColumn Header="Member ID" Width="100"
+                            <GridViewColumn Header="Member ID" Width="80"
                                             DisplayMemberBinding="{Binding Path=MemberId}"/>
-                            <GridViewColumn Header="Order date" Width="200"
+                            <GridViewColumn Header="Order date" Width="170"
                                             DisplayMemberBinding="{Binding Path=OrderDate}"/>
-                            <GridViewColumn Header="Required date" Width="100"
+                            <GridViewColumn Header="Required date" Width="170"
                                              DisplayMemberBinding="{Binding Path=RequiredDate}"/>
-                            <GridViewColumn Header="Shipped date" Width="100" 
+                            <GridViewColumn Header="Shipped date" Width="170" 
                                             DisplayMemberBinding="{Binding Path=ShippedDate}"/>
                             <GridViewColumn Header="Freight" Width="100" 
                                             DisplayMemberBinding="{Binding Path=Freight,

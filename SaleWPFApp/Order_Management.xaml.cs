@@ -50,7 +50,8 @@ namespace SaleWPFApp
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
-
+            Create_Order window = new Create_Order();
+            window.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -65,7 +66,10 @@ namespace SaleWPFApp
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            if (MessageBox.Show("Are you sure to quit?", "Message", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btnStatistics_Click(object sender, RoutedEventArgs e) // không biết cách so sánh 2 datepicker

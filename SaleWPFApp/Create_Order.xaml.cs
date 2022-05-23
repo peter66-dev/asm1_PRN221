@@ -227,7 +227,6 @@ namespace SaleWPFApp
                 {
                     MessageBox.Show("Xin lỗi, bạn cần nhập đúng % discount, freight và số tiền khách trả!", "Invalid input");
                 }
-
             }
             else
             {

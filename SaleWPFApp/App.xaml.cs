@@ -36,7 +36,7 @@ namespace SalesWPFApp
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            var window = serviceProvider.GetService<Create_Order>();
+            var window = serviceProvider.GetService<Order_Management>();
             window.Show();
             //var login = serviceProvider.GetService<Login>();
             //login.Show();

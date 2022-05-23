@@ -45,7 +45,6 @@ namespace SalesWPFApp
             if (email.Equals(admin.Email) && password.Equals(admin.Password))
             {
                 Admin_Form window = new Admin_Form();
-                window.isAdmin = true;
                 window.Show();
                 this.Close();
             }
