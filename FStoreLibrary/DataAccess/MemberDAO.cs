@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FStoreLibrary.DataAccess
 {
@@ -65,7 +63,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 list = context.Members.Where(m => m.Email.ToLower().Contains(email.ToLower())).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetMembersByEmail function!");
             }
@@ -80,7 +78,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 mem = context.Members.Where(m => m.Email.ToLower().Contains(email.ToLower())).ToList()[0];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetMemberByEmail function!");
             }
@@ -103,7 +101,7 @@ namespace FStoreLibrary.DataAccess
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in UpdateMember function!");
             }
@@ -126,7 +124,7 @@ namespace FStoreLibrary.DataAccess
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in DeleteMember function!");
             }
@@ -138,20 +136,20 @@ namespace FStoreLibrary.DataAccess
             try
             {
                 Member tmp = GetMemberByID(mem.MemberId);
-                if(tmp == null)
+                if (tmp == null)
                 {
                     var context = new FStoreDBContext();
                     context.Members.Add(mem);
-                    if(context.SaveChanges() != 0)
+                    if (context.SaveChanges() != 0)
                     {
                         isInserted = !isInserted;
                     }
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("MemberID has existed in system!");
+                throw new Exception("MemberID hasisted in system!");
             }
             return isInserted;
         }

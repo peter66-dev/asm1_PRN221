@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 E:\Chuyen_nganh_7\PRN221\Assignments\Ass01Solution_SE151263\SaleWPFApp\App.xaml
-71994520603
+9-322275170
 
-12673636295
+14-657408158
 2212116596487
-Admin_Form.xaml;Create_Order.xaml;Login.xaml;Member_Detail.xaml;Member_Management.xaml;Order_Management.xaml;Product_Management.xaml;
+Admin_Form.xaml;Create_Order.xaml;Login.xaml;Member_Detail.xaml;Member_Management.xaml;OrderDetail_Management.xaml;Order_History.xaml;Order_Management.xaml;Product_Management.xaml;
 
-False
+True
 

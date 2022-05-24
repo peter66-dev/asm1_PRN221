@@ -33,7 +33,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 products = context.Products.ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetAllProducts function!");
             }
@@ -48,7 +48,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 pro = context.Products.SingleOrDefault(p => p.ProductId == id);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetProductsByID function!");
             }
@@ -63,7 +63,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 products = context.Products.Where(p => p.ProductName.ToLower().Contains(name.ToLower())).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetProductsByName function!");
             }
@@ -78,7 +78,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 products = context.Products.Where(p => p.UnitPrice <= price).OrderBy(p => p.UnitPrice).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetProductsByPrice function!");
             }
@@ -93,7 +93,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 products = context.Products.Where(p => p.UnitsInStock <= quantity).OrderBy(p => p.UnitsInStock).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetProductsByPrice function!");
             }
@@ -117,7 +117,7 @@ namespace FStoreLibrary.DataAccess
                     isInserted = !isInserted;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in InsertProduct function!");
             }
@@ -142,7 +142,7 @@ namespace FStoreLibrary.DataAccess
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in UpdateProduct function!");
             }
@@ -163,7 +163,7 @@ namespace FStoreLibrary.DataAccess
                     context.SaveChanges();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in DeleteProduct function!");
             }
@@ -204,7 +204,7 @@ namespace FStoreLibrary.DataAccess
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in SubQuantity function!");
             }
@@ -212,4 +212,3 @@ namespace FStoreLibrary.DataAccess
         }
     }
 }
-           

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FStoreLibrary.DataAccess
 {
@@ -34,21 +32,22 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 foreach (var pro in cart)
                 {
-                    OrderDetail od = new OrderDetail() { 
+                    OrderDetail od = new OrderDetail()
+                    {
                         OrderId = orderID,
                         ProductId = pro.ProductId,
                         UnitPrice = pro.UnitPrice,
                         Quantity = pro.UnitsInStock,
-                        Discount = Math.Round(discount,3)
+                        Discount = Math.Round(discount, 3)
                     };
                     context.OrderDetails.Add(od);
-                    if(context.SaveChanges()!= 0)
+                    if (context.SaveChanges() != 0)
                     {
                         check = true;
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in InsertOrderDetails function");
             }
@@ -63,11 +62,12 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 list = context.OrderDetails.Where(o => o.OrderId == orderID).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetAllOrders function!");
             }
             return list;
         }
+
     }
 }

@@ -1,9 +1,6 @@
 ﻿using FStoreLibrary.DataAccess;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FStoreLibrary.Repository
 {
@@ -22,5 +19,11 @@ namespace FStoreLibrary.Repository
         public int CreateNewOrderID() => OrderDAO.Instance.CreateNewOrderID();
 
         public bool InsertOrder(Order ord) =>OrderDAO.Instance.InsertOrder(ord);
+
+        public bool DeleteOrder(int id) => OrderDAO.Instance.DeleteOrder(id);
+
+        public bool UpdateOrder(Order or) =>OrderDAO.Instance.UpdateOrder(or);
+
+        public List<Order> GetOrdersByMemberID(int id) => OrderDAO.Instance.GetOrdersByMemberID(id);
     }
 }

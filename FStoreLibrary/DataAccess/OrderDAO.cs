@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FStoreLibrary.DataAccess
 {
@@ -32,13 +31,28 @@ namespace FStoreLibrary.DataAccess
             try
             {
                 var context = new FStoreDBContext();
-                orders = context.Orders.ToList();
+                orders = context.Orders.OrderBy(o => o.OrderDate).Reverse().ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetAllOrders function!");
             }
             return orders;
+        }
+
+        public List<Order> GetOrdersByMemberID(int id)
+        {
+            List<Order> list = new List<Order>();
+            try
+            {
+                var context = new FStoreDBContext();
+                list = context.Orders.Where(ord => ord.MemberId == id).OrderBy(o => o.OrderDate).ToList();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Bug in GetOrderByMemberID function!");
+            }
+            return list;
         }
 
         public Order GetOrderByID(int id)
@@ -49,7 +63,7 @@ namespace FStoreLibrary.DataAccess
                 var context = new FStoreDBContext();
                 o = context.Orders.SingleOrDefault(ord => ord.OrderId == id);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in GetOrderByID function!");
             }
@@ -62,9 +76,9 @@ namespace FStoreLibrary.DataAccess
             try
             {
                 var context = new FStoreDBContext();
-                list = context.Orders.Where(o => o.OrderDate >= start && o.OrderDate <= end).ToList();
+                list = context.Orders.Where(o => o.OrderDate >= start && o.OrderDate <= end).OrderBy(o => o.OrderDate).Reverse().ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in Statistic function!");
             }
@@ -90,10 +104,10 @@ namespace FStoreLibrary.DataAccess
             while (check)
             {
                 check = false;
-                id = rd.Next(1,32000) ;
+                id = rd.Next(1, 32000);
                 foreach (var or in list)
                 {
-                    if (id  == or.OrderId)
+                    if (id == or.OrderId)
                     {
                         check = true;
                     }
@@ -119,11 +133,53 @@ namespace FStoreLibrary.DataAccess
                     isInserted = !isInserted;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Bug in InsertOrder function!");
             }
             return isInserted;
+        }
+
+        public bool DeleteOrder(int id)
+        {
+            bool check = false;
+            try
+            {
+                Order order = GetOrderByID(id);
+                if (order != null)
+                {
+                    var context = new FStoreDBContext();
+                    context.Orders.Remove(order);
+                    if (context.SaveChanges() != 0)
+                    {
+                        check = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Bug in DeleteOrder function!");
+            }
+            return check;
+        }
+
+        public bool UpdateOrder(Order or)
+        {
+            bool check = false;
+            try
+            {
+                var context = new FStoreDBContext();
+                context.Entry<Order>(or).State = EntityState.Modified;
+                if (context.SaveChanges() > 0)
+                {
+                    check = true;
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Bug in UpdateOrder function!");
+            }
+            return check;
         }
     }
 }

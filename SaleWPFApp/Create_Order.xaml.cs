@@ -2,17 +2,8 @@
 using FStoreLibrary.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SaleWPFApp
 {
@@ -189,7 +180,6 @@ namespace SaleWPFApp
                         string checkQuantityMsg = productRepo.CheckQuantity(cart);
                         if (checkQuantityMsg.Length == 0)
                         {
-                            DateTime d = new DateTime();
                             Order o = new Order()
                             {
                                 OrderId = orderRepo.CreateNewOrderID(),
@@ -202,7 +192,7 @@ namespace SaleWPFApp
                             };
                             if (productRepo.SubQuantity(cart) == cart.Count && orderRepo.InsertOrder(o) && orderDetailRepo.InsertOrderDetails(cart, o.OrderId, discount))
                             {
-                                MessageBox.Show("Trừ sản phẩm thành công!", "Error message");
+                                MessageBox.Show("Tạo hoá đơn thành công!", "Message");
                                 txtReturnAmount.Text = returnMoney.ToString();
                                 btnSave.IsEnabled = false;
                                 btnAdd.IsEnabled = false;
@@ -223,7 +213,7 @@ namespace SaleWPFApp
                         MessageBox.Show("Xin lỗi, số tiền khách trả phải >= số tiền hoá đơn!", "Error message");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Xin lỗi, bạn cần nhập đúng % discount, freight và số tiền khách trả!", "Invalid input");
                 }

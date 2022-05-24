@@ -21,7 +21,6 @@ namespace SalesWPFApp
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton(typeof(IProductRepository), typeof(ProductRepository));
-            services.AddSingleton(typeof(ICategoryRepository), typeof(CategoryRepository));
             services.AddSingleton(typeof(IMemberRepository), typeof(MemberRepository));
             services.AddSingleton(typeof(IOrderDetailRepository), typeof(OrderDetailRepository));
             services.AddSingleton(typeof(IOrderRepository), typeof(OrderRepository));
@@ -31,12 +30,14 @@ namespace SalesWPFApp
             services.AddSingleton<Member_Management>();
             services.AddSingleton<Member_Detail>();
             services.AddSingleton<Order_Management>();
+            services.AddSingleton<OrderDetail_Management>();
             services.AddSingleton<Create_Order>();
+            services.AddSingleton<Order_History>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            var window = serviceProvider.GetService<Order_Management>();
+            var window = serviceProvider.GetService<Login>();
             window.Show();
             //var login = serviceProvider.GetService<Login>();
             //login.Show();

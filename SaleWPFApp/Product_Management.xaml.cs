@@ -2,17 +2,7 @@
 using FStoreLibrary.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SalesWPFApp
 {
@@ -204,7 +194,8 @@ namespace SalesWPFApp
             else if (txtSearch.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Xin lỗi, bạn phải nhập từ khoá tìm kiếm!", "Error message");
-            }else
+            }
+            else
             {
                 int typeSearch = cboSearch.SelectedIndex;
                 string search_keyword = txtSearch.Text.Trim();
@@ -219,7 +210,7 @@ namespace SalesWPFApp
                         }
                         else
                         {
-                            LoadProductList(new List<Product> { pro});
+                            LoadProductList(new List<Product> { pro });
                         }
                     }
                     else
@@ -241,7 +232,7 @@ namespace SalesWPFApp
                 }
                 else if (typeSearch == 2) //  2: UnitPrice
                 {
-                    if (decimal.TryParse(search_keyword,out decimal price) && price > 0)
+                    if (decimal.TryParse(search_keyword, out decimal price) && price > 0)
                     {
                         List<Product> list = productRepository.GetProductsByPrice(price);
                         if (list.Count == 0)
@@ -288,6 +279,6 @@ namespace SalesWPFApp
             }
         }
 
-       
+
     }
 }

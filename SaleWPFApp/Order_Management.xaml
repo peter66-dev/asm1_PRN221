@@ -20,8 +20,8 @@
                             HorizontalAlignment="Left" Width="350">
                     <Label Name="lbTitle" Foreground="Red" FontWeight="DemiBold"
                             FontSize="20" Content="ORDER INFORMATION" HorizontalAlignment="Center"/>
-                    <Label Name="lbProId" Content="Order Id" HorizontalAlignment="Left"/>
-                    <TextBox Name="txtProId"
+                    <Label Name="lbOrderId" Content="Order Id" HorizontalAlignment="Left"/>
+                    <TextBox Name="txtOrderId"
                             Height="auto"
                             Text="{Binding Path=OrderId, Mode=OneWay}" 
                             DataContext="{Binding ElementName=lvOrders, 
@@ -37,20 +37,20 @@
                              Height="auto"
                              Text="{Binding Path=OrderDate, Mode=OneWay}"
                              DataContext="{Binding ElementName=lvOrders,
-                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                             Path=SelectedItem}"  HorizontalAlignment="Stretch" IsEnabled="False"/>
                     <Label Name="lbRequiredDate" Content="Required date" HorizontalAlignment="Left" />
                     <TextBox Name="txtRequiredDate"
                              Height="auto"
                              Text="{Binding Path=RequiredDate, Mode=OneWay}"
                              DataContext="{Binding ElementName=lvOrders,
-                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                             Path=SelectedItem}"  HorizontalAlignment="Stretch" IsEnabled="False"/>
                     <Label Name="lbShippedDate" Content="Shipped date"  HorizontalAlignment="Left"/>
                     <TextBox Name="txtShippedDate"
                              Height="auto"
                              Text="{Binding
                              Path=ShippedDate, Mode=OneWay}"
                              DataContext="{Binding ElementName=lvOrders,
-                             Path=SelectedItem}"  HorizontalAlignment="Stretch"/>
+                             Path=SelectedItem}"  HorizontalAlignment="Stretch" IsEnabled="False"/>
                     <Label Name="lbFreight" Content="Freight"  HorizontalAlignment="Left"/>
                     <TextBox Name="txtFreight"
                              Height="auto"
@@ -58,29 +58,32 @@
                              DataContext="{Binding ElementName=lvOrders,
                              Path=SelectedItem}" HorizontalAlignment="Stretch"/>
                 </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Horizontal"
-                            HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left" Margin="0,300,0,0" Grid.RowSpan="2" Width="498">
                     <Button x:Name="btnLoad" Margin="10" Width="80" Content="Load"
                             Click="btnLoad_Click" Cursor="Hand"/>
                     <Button x:Name="btnInsert" Margin="10" Width="80" Content="Insert"
                             Click="btnInsert_Click" Cursor="Hand"/>
                     <Button x:Name="btnUpdate" Margin="10" Width="80" Content="Update"
-                            Click="btnUpdate_Click" Cursor="Hand"/>
+                            Click="btnUpdate_Click" Cursor="Hand" IsEnabled="False"/>
                     <Button x:Name="btnDelete" Margin="10" Width="80" Content="Delete"
-                            Click="btnDelete_Click" Cursor="Hand"/>
+                            Click="btnDelete_Click" Cursor="Hand" IsEnabled="False"/>
+                    <Button x:Name="btnDetail" Width="80" Content="Detail"
+                        Click="btnDetail_Click" Cursor="Hand" IsEnabled="False"/>
                 </StackPanel>
                 <ListView Grid.Row="2" Name="lvOrders" Width="Auto" Height="Auto" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Order ID" Width="80" 
-                                            DisplayMemberBinding="{Binding Path=OrderId}"/>
+                                            DisplayMemberBinding="{Binding Path=OrderId}">
+                            </GridViewColumn>
                             <GridViewColumn Header="Member ID" Width="80"
                                             DisplayMemberBinding="{Binding Path=MemberId}"/>
                             <GridViewColumn Header="Order date" Width="170"
                                             DisplayMemberBinding="{Binding Path=OrderDate}"/>
-                            <GridViewColumn Header="Required date" Width="170"
+                            <GridViewColumn Header="Required date" Width="160"
                                              DisplayMemberBinding="{Binding Path=RequiredDate}"/>
-                            <GridViewColumn Header="Shipped date" Width="170" 
+                            <GridViewColumn Header="Shipped date" Width="160" 
                                             DisplayMemberBinding="{Binding Path=ShippedDate}"/>
                             <GridViewColumn Header="Freight" Width="100" 
                                             DisplayMemberBinding="{Binding Path=Freight,
@@ -95,7 +98,7 @@
                              VerticalAlignment="Top" DisplayDateStart="2021-01-01" DisplayDateEnd="2030-01-01"/>
                 <DatePicker x:Name="dpEndDate" HorizontalAlignment="Left" Margin="557,26,0,0" VerticalAlignment="Top" DisplayDateStart="2022-01-01" DisplayDateEnd="2030-01-01"/>
                 <Label Content="Total:" HorizontalAlignment="Left" Margin="437,72,0,0" VerticalAlignment="Top" FontSize="15"/>
-                <TextBox HorizontalAlignment="Left" Margin="507,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="15" TextAlignment="Right" IsEnabled="False"/>
+                <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="507,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="15" TextAlignment="Right" IsEnabled="False"/>
                 <Label Content="VND" HorizontalAlignment="Left" Margin="639,72,0,0" VerticalAlignment="Top" FontSize="15" RenderTransformOrigin="5.473,0.669"/>
             </Grid>
         </DockPanel>
